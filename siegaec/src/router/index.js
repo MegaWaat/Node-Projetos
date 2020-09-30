@@ -1,37 +1,45 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import EventosInscritos from '../views/EventosInscritos.vue'
-import MeusEventos from '../views/MeusEventos.vue'
-import TrabalhosAcademicos from '../views/TrabalhosAcademicos.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
+import TrabalhosAcademicos from "../views/TrabalhosAcademicos.vue";
+import MeusEventos from "../views/MeusEventos.vue";
 
-Vue.use(VueRouter)
+
+Vue.use(VueRouter);
 
 const routes = [
+ 
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/home",
+    name: "Home",
+    component: Home,
   },
   {
-    path: '/eventos-inscritos',
-    name: 'EventosInscritos',
-    component: EventosInscritos
+    path: "/trabalhos-academicos",
+    name: "TrabalhosAcademicos",
+    component: TrabalhosAcademicos,
   },
   {
-    path: '/meus-eventos',
-    name: 'MeusEventos',
-    component: MeusEventos
+    path: "/eventos-inscritos",
+    name: "EventosInscritos",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component() {
+      return import(
+        /* webpackChunkName: "about" */ "../views/EventosInscritos.vue"
+      );
+    },
   },
   {
-    path: '/trabalhos-academicos',
-    name: 'TrabalhosAcademicos',
-    component: TrabalhosAcademicos
+    path: "/meus-eventos",
+    name: "MeusEventos",
+    component: MeusEventos,
   },
-]
+];
 
 const router = new VueRouter({
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

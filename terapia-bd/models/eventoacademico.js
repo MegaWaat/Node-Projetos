@@ -37,7 +37,7 @@ module.exports = sequelize => {
     },
     enderecoId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
@@ -53,7 +53,7 @@ module.exports = sequelize => {
     tableName: "eventoacademico",
     comment: "",
     indexes: [{
-      name: "enderecoId",
+      name: "eventoacademico_ibfk_2",
       unique: false,
       type: "BTREE",
       fields: ["enderecoId"]
